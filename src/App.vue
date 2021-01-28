@@ -14,17 +14,19 @@
   </div>
 </template>
 <script lang="ts">
-interface Foo {
-  a: string
-  b: number
-}
-export default {
-    data () {
-        return {
-          aa: 1
-        }
-    }
-}
+import Vue from 'vue'
+import request from '@/utils/request'
+
+request({
+  method: 'GET',
+  url: '/boss/v2/api-docs?group=edu-boss-boot'
+}).then(res => {
+  console.log(res)
+})
+
+export default Vue.extend({
+  name: 'App'
+})
 </script>
 <style lang="scss" scoped>
 // @import "~@/styles/variables.scss";
