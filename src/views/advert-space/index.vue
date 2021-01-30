@@ -1,15 +1,11 @@
 <template>
-    <layout />
+    <div>广告位管理</div>
 </template>
 <script lang="ts">
 import Vue from 'vue'
-import layout from '@/layout/index.vue'
 
 export default Vue.extend({
-  name: 'LoginIndex',
-  components: {
-    layout
-  }
+    name: 'AdvertSpace'
 })
 </script>
 <style lang="scss" scoped></style>

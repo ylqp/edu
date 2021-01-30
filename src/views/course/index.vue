@@ -1,15 +1,11 @@
 <template>
-    <layout />
+    <div>课程管理</div>
 </template>
 <script lang="ts">
 import Vue from 'vue'
-import layout from '@/layout/index.vue'
 
 export default Vue.extend({
-  name: 'LoginIndex',
-  components: {
-    layout
-  }
+    name: 'CourseIndex'
 })
 </script>
 <style lang="scss" scoped></style>
