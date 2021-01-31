@@ -1,15 +1,13 @@
 <template>
-    <layout />
+    <div>
+      首页
+    </div>
 </template>
 <script lang="ts">
 import Vue from 'vue'
-import layout from '@/layout/index.vue'
 
 export default Vue.extend({
-  name: 'LoginIndex',
-  components: {
-    layout
-  }
+  name: 'LoginIndex'
 })
 </script>
 <style lang="scss" scoped></style>

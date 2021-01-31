@@ -37,6 +37,7 @@ export default Vue.extend({
       return {
         form: {
           // 18201288771 ==== 111111
+          // 18631142257 ==== 111111
           phone: '',
           password: ''
         },
@@ -75,9 +76,14 @@ export default Vue.extend({
           if (data.state !== 1) { // 失败
              this.$message.error(data.message)
           } else { // 成功
-            this.$router.push({
-              name: 'home'
-            })
+            // 1.登录成功 记录登录状态 状态要能够全局访问 放到vuex
+            this.$store.commit('setUser', data.content)
+            // 2.在访问需要登录的页面的时候判断有没有登录状态（路由拦截器）
+            // this.$router.push({
+            //   name: 'home'
+            // })
+            // 记录上次页面
+            this.$router.push(this.$route.query.redirect as string || '/')
             this.$message.success('登录成功')
           }
         } catch (err) {

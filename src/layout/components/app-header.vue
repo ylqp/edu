@@ -8,21 +8,63 @@
         </el-breadcrumb>
         <el-dropdown>
             <span class="el-dropdown-link">
-                <el-avatar icon="el-icon-user-solid"></el-avatar>
+                <el-avatar icon="el-icon-user-solid" :src="userInfo.portrait || require('@/assets/user.png')"></el-avatar>
                 <i class="el-icon-arrow-down el-icon--right"></i>
             </span>
             <el-dropdown-menu slot="dropdown">
-                <el-dropdown-item>用户ID</el-dropdown-item>
-                <el-dropdown-item divided>退出</el-dropdown-item>
+                <el-dropdown-item>{{userInfo.userName}}</el-dropdown-item>
+                <el-dropdown-item
+                    divided
+                    @click.native="handleLogout"
+                    >退出</el-dropdown-item>
             </el-dropdown-menu>
         </el-dropdown>
     </div>
 </template>
 <script lang="ts">
 import Vue from 'vue'
+import { getUserInfo } from '@/services/user'
 
 export default Vue.extend({
-    name: 'AppHeader'
+    name: 'AppHeader',
+    data () {
+        return {
+            userInfo: {}
+        }
+    },
+    created () {
+        this.loadUserInfo()
+    },
+    methods: {
+        async loadUserInfo () {
+            const { data } = await getUserInfo()
+            this.userInfo = data.content
+        },
+        handleLogout () { // 用户退出
+            this.$confirm('确认退出?', '提示', {
+                confirmButtonText: '确定',
+                cancelButtonText: '取消',
+                type: 'warning'
+            }).then(() => { // 确认
+                // 清除用户状态
+                this.$store.commit('setUser', null)
+
+                // 跳到登录页
+                this.$router.push({
+                    name: 'login'
+                })
+                this.$message({
+                    type: 'success',
+                    message: '退出成功!'
+                })
+            }).catch(() => { // 取消
+                this.$message({
+                    type: 'info',
+                    message: '取消'
+                })
+            })
+        }
+    }
 })
 </script>
 <style lang="scss" scoped>
