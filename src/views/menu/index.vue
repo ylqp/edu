@@ -33,11 +33,11 @@
                 <template slot-scope="scope">
                     <el-button
                     size="mini"
-                    @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
+                    @click="handleEdit(scope.row)">编辑</el-button>
                     <el-button
                     size="mini"
                     type="danger"
-                    @click="handleDelete(scope.$index, scope.row)">删除</el-button>
+                    @click="handleDelete(scope.row)">删除</el-button>
                 </template>
             </el-table-column>
         </el-table>
@@ -45,7 +45,7 @@
 </template>
 <script lang="ts">
 import Vue from 'vue'
-import { getAllMenus } from '@/services/menu'
+import { getAllMenus, deleteMenu } from '@/services/menu'
 export default Vue.extend({
     name: 'menuIndex',
     data () {
@@ -64,11 +64,27 @@ export default Vue.extend({
                 this.menus = data.data
             }
         },
-        handleEdit () {
-            console.log(22)
+        handleEdit (item: any) {
+            this.$router.push({
+                name: 'menu-edit',
+                params: {
+                    id: item.id
+                }
+            })
         },
-        handleDelete () {
-            console.log(33)
+        handleDelete (item: any) {
+            this.$confirm('确认删除吗？', '', {})
+                .then(async () => {
+                    const { data } = await deleteMenu(item.id)
+                    if (data.code === '000000') {
+                        this.$message.success('删除成功')
+                        this.loadAllMenus() // 更新数据列表
+                    }
+                })
+                .catch(err => {
+                    console.log(err)
+                    this.$message.info('已取消删除')
+                })
         }
     }
 })

@@ -40,6 +40,11 @@ const routes: Array<RouteConfig> = [
           component: () => import('@/views/menu/add-menu.vue')
         },
         {
+          path: '/menu/:id/edit',
+          name: 'menu-edit',
+          component: () => import('@/views/menu/edit-menu.vue')
+        },
+        {
           path: '/resource',
           name: 'resource',
           component: () => import('@/views/resource/index.vue')
