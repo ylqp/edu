@@ -5,7 +5,6 @@ import request from '@/utils/request'
 // import qs from 'qs'
 // import store from '@/store'
 
-
 // 获取资源列表
 export const getResourcePages = (data: any) => {
     return request({
