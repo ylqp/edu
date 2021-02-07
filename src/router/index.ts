@@ -55,6 +55,16 @@ const routes: Array<RouteConfig> = [
           component: () => import('@/views/course/index.vue')
         },
         {
+          path: '/course/add',
+          name: 'course-add',
+          component: () => import('@/views/course/add-course.vue')
+        },
+        {
+          path: 'course/edit',
+          name: 'course-edit',
+          component: () => import('@/views/course/edit-course.vue')
+        },
+        {
           path: '/user',
           name: 'user',
           component: () => import('@/views/user/index.vue')

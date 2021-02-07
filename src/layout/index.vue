@@ -33,7 +33,7 @@ export default Vue.extend({
     min-width: 980px;
 }
 .el-header {
-    background-color: #B3C0D1;
+    background-color: #fff;
     color: #333;
     text-align: center;
     line-height: 60px;
@@ -45,6 +45,6 @@ export default Vue.extend({
     line-height: 200px;
 }
 .el-main {
-    background-color: #fff;
+    background-color: #e9eef2;
 }
 </style>
