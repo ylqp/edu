@@ -30,7 +30,7 @@ export const addOrUpdateCourse = (data: any) => {
 }
 
 // 上传
-export const uploadCourseImage = (data: any, onUploadProgress:
+export const uploadCourseImage = (data: any, onUploadProgress?:
     (progressEvent: ProgressEvent) => void) => {
     // 该接口要求的请求数据类型是：multipart/form-data
     // 所以需要提交 FormData 数据对象
@@ -45,5 +45,15 @@ export const uploadCourseImage = (data: any, onUploadProgress:
         //     // console.log(e.total) // 上传文件的总大小
         //     Math.floor(e.loaded / e.total * 100)
         // }
+    })
+}
+
+export const getCourseById = (courseId: string | number) => {
+    return request({
+        method: 'GET',
+        url: '/boss/course/getCourseById',
+        params: {
+            courseId
+        }
     })
 }

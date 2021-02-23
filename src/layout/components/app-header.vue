@@ -1,11 +1,12 @@
 <template>
     <div class="header">
-        <el-breadcrumb separator="/">
+        <!-- <el-breadcrumb separator="/">
             <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-            <el-breadcrumb-item><a href="/">活动管理</a></el-breadcrumb-item>
+            <el-breadcrumb-item><a href="/">{{$route.meta.title}}</a></el-breadcrumb-item>
             <el-breadcrumb-item>活动列表</el-breadcrumb-item>
             <el-breadcrumb-item>活动详情</el-breadcrumb-item>
-        </el-breadcrumb>
+        </el-breadcrumb> -->
+        <breadcrumb />
         <el-dropdown>
             <span class="el-dropdown-link">
                 <el-avatar icon="el-icon-user-solid" :src="userInfo.portrait || require('@/assets/user.png')"></el-avatar>
@@ -23,13 +24,19 @@
 </template>
 <script lang="ts">
 import Vue from 'vue'
+import Breadcrumb from './Breadcrumb.vue'
 import { getUserInfo } from '@/services/user'
 
 export default Vue.extend({
     name: 'AppHeader',
+    components: {
+        // eslint-disable-next-line vue/no-unused-components
+        Breadcrumb
+    },
     data () {
         return {
-            userInfo: {}
+            userInfo: {},
+            breadlist: []
         }
     },
     created () {
@@ -64,6 +71,8 @@ export default Vue.extend({
                 })
             })
         }
+    },
+    watch: {
     }
 })
 </script>

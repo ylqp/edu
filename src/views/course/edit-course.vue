@@ -1,5 +1,6 @@
 <template>
-    <div></div>
+    <div class="edit-course">
+    </div>
 </template>
 <script lang="ts">
 import Vue from 'vue'

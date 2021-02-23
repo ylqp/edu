@@ -58,9 +58,14 @@
             label="操作"
             align="center"
             width="250">
-            <template>
+            <template slot-scope="scope">
                 <el-button>编辑</el-button>
-                <el-button>内容管理</el-button>
+                <el-button @click="$router.push({
+                    name: 'course-section',
+                    params: {
+                        courseId: scope.row.id
+                    }
+                })">内容管理</el-button>
             </template>
         </el-table-column>
         </el-table>

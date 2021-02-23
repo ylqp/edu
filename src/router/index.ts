@@ -18,7 +18,8 @@ const routes: Array<RouteConfig> = [
           name: 'home',
           component: () => import(/* webpackChunkName: 'home' */ '@/views/home/index.vue'),
           meta: {
-            requiresAuth: true // 自定义数据
+            requiresAuth: true, // 自定义数据
+            title: '首页'
           }
         },
         {
@@ -26,58 +27,97 @@ const routes: Array<RouteConfig> = [
           name: 'role',
           component: () => import('@/views/role/index.vue'),
           meta: {
-            requiresAuth: true // 自定义数据
+            requiresAuth: true, // 自定义数据
+            title: '角色管理'
           }
         },
         {
           path: '/menu',
           name: 'menu',
-          component: () => import('@/views/menu/index.vue')
+          component: () => import('@/views/menu/index.vue'),
+          meta: {
+            title: '菜单管理'
+          }
         },
         {
           path: '/menu/add',
           name: 'menu-add',
-          component: () => import('@/views/menu/add-menu.vue')
+          component: () => import('@/views/menu/add-menu.vue'),
+          meta: {
+            title: '添加菜单'
+          }
         },
         {
           path: '/menu/:id/edit',
           name: 'menu-edit',
-          component: () => import('@/views/menu/edit-menu.vue')
+          component: () => import('@/views/menu/edit-menu.vue'),
+          meta: {
+            title: '编辑菜单'
+          }
         },
         {
           path: '/resource',
           name: 'resource',
-          component: () => import('@/views/resource/index.vue')
+          component: () => import('@/views/resource/index.vue'),
+          meta: {
+            title: '资源管理'
+          }
         },
         {
           path: '/course',
           name: 'course',
-          component: () => import('@/views/course/index.vue')
+          component: () => import('@/views/course/index.vue'),
+          meta: {
+            title: '课程管理'
+          }
         },
         {
           path: '/course/add',
           name: 'course-add',
-          component: () => import('@/views/course/add-course.vue')
+          component: () => import('@/views/course/add-course.vue'),
+          meta: {
+            title: '添加课程'
+          }
         },
         {
           path: 'course/edit',
           name: 'course-edit',
-          component: () => import('@/views/course/edit-course.vue')
+          component: () => import('@/views/course/edit-course.vue'),
+          meta: {
+            title: '编辑课程'
+          }
+        },
+        {
+          path: 'course/:courseId/section',
+          name: 'course-section',
+          component: () => import('@/views/course/components/section.vue'),
+          meta: {
+            title: '编辑课程'
+          }
         },
         {
           path: '/user',
           name: 'user',
-          component: () => import('@/views/user/index.vue')
+          component: () => import('@/views/user/index.vue'),
+          meta: {
+            title: '用户管理'
+          }
         },
         {
           path: '/advert',
           name: 'advert',
-          component: () => import('@/views/advert/index.vue')
+          component: () => import('@/views/advert/index.vue'),
+          meta: {
+            title: '广告管理'
+          }
         },
         {
           path: '/advert-space',
           name: 'advert-space',
-          component: () => import('@/views/advert-space/index.vue')
+          component: () => import('@/views/advert-space/index.vue'),
+          meta: {
+            title: '广告位管理'
+          }
         }
       ]
     },

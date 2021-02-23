@@ -133,9 +133,8 @@
                 </div>
                 <div v-show="activeStep === 4">
                     <el-form-item label="课程详情">
-                        <el-input
-                            v-model="course.isNewDes"
-                            type="textarea"></el-input>
+                        <!-- <el-input v-model="course.isNewDes" type="textarea"></el-input> -->
+                        <text-editor v-model="course.courseDescriptionMarkDown" />
                     </el-form-item>
                     <el-form-item>
                         <el-button
@@ -156,9 +155,10 @@
 import Vue from 'vue'
 import { addOrUpdateCourse, uploadCourseImage } from '@/services/course'
 import CourseImage from './components/CourseImage.vue'
+import TextEditor from '@/components/TextEditor/index.vue'
 export default Vue.extend({
     name: 'AddCourse',
-    components: { CourseImage },
+    components: { CourseImage, TextEditor },
     data () {
         return {
             activeStep: 0,
@@ -183,7 +183,8 @@ export default Vue.extend({
                 },
                 sortNum: 3,
                 previewFirstField: '',
-                previewSecondField: ''
+                previewSecondField: '',
+                courseDescriptionMarkDown: '<h1>hrllo</h1>'
                 // status: 1 // 0: 未上架 1: 直接上架
             }
         }
